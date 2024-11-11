@@ -86,6 +86,7 @@ struct schedule {
       Row(){
         Text('请选择日期:')
           .fontColor(Color.White)
+          .margin({left:10})
         Button(this.str_day)
           .backgroundColor('#00BFFF')
           .bindMenu(this.DayMenu())
