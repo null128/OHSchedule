@@ -15,6 +15,7 @@ let time: number;
 struct add_course{
   @State str_day: string='日期';
   @State str_time: string='时间';
+  @State error: string | undefined = undefined;
 
   @Builder
   DayMenu(){
@@ -140,7 +141,7 @@ struct add_course{
         Text('请选择课程时间')
           .fontColor('#666666')
         Button(this.str_day)
-          .margin({right:24})
+          .margin({right:10})
           .fontColor('#666666')
           .backgroundColor('#E0E0E0')
           .bindMenu(this.DayMenu())
@@ -156,6 +157,12 @@ struct add_course{
         .margin({top:30,bottom:10})
         .width('96%')
 
+      if(this.error!=undefined){
+        Text(this.error)
+          .fontColor(Color.Red)
+          .margin({top:5})
+      }
+
       Button('确认新增')
         .onClick(()=>{
           let new_course: course= {
@@ -165,33 +172,14 @@ struct add_course{
             time: time
           }
           if (new_course.name===undefined)
-            console.log('课程名称为空')
+            this.error='课程名称为空'
           else{
             if (new_course.place===undefined)
-              console.log('上课地点为空')
+              this.error='上课地点为空'
             else{
               if (new_course.day==0||new_course.time==0)
-                console.log('请选择课程时间')
+                this.error='请选择课程时间'
               else{
-                // console.log('name:',new_course.name)
-                // console.log('place:',new_course.place)
-                // console.log('day',new_course.day)
-                // console.log('time',new_course.time)
-                //appendFile('course',new_course)
-                /*let arr: course[]=[];
-                arr.push(new_course)*/
-                /*for(let item of arr){
-                  console.log('name:',item.name)
-                  console.log('place:',item.place)
-                  console.log('day',item.day)
-                  console.log('time',item.time)
-                }*/
-                /*writeFile('course',arr).then((res: string)=>{
-                  console.info(res)
-                })
-                  .catch((res: string)=>{
-                    console.info(res)
-                  })*/
                 appendFile('course',new_course)
                 router.replaceUrl({url: 'pages/Index'})
               }
@@ -203,7 +191,5 @@ struct add_course{
     .width('100%')
     .height('100%')
     .backgroundColor('#E8E8E8')
-    //.backgroundImage('images/background.jpg')
-    //.backgroundImageSize(ImageSize.FILL)
   }
 }

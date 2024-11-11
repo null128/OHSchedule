@@ -8,63 +8,8 @@ let arr: course[];
 struct schedule {
   @State day: number = 0;
   @State courses: course[] = [];
+  @State str_day: string='日期';
 
-  @Builder
-  DayMenu(){
-    Menu(){
-      MenuItem({content:'星期一'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=1;
-          }
-        })
-      MenuItem({content:'星期二'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=2;
-          }
-        })
-      MenuItem({content:'星期三'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=3;
-          }
-        })
-      MenuItem({content:'星期四'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=4;
-          }
-        })
-      MenuItem({content:'星期五'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=5;
-          }
-        })
-      MenuItem({content:'星期六'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=6;
-          }
-        })
-      MenuItem({content:'星期日'})
-        .selectIcon(true)
-        .onChange((selected: boolean)=>{
-          if(selected){
-            this.day=7;
-          }
-        })
-    }
-  }
-
-  // 处理星期选择的公共函数
   handleDayChange(day: number) {
     readFile('course').then((courses: course[]) => {
       arr = courses.filter(course => course.day === day)
@@ -74,35 +19,80 @@ struct schedule {
     this.day = day;  // 设置当前星期
   }
 
+  @Builder
+  DayMenu(){
+    Menu(){
+      MenuItem({content:'星期一'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期一'
+            this.handleDayChange(1);
+          }
+        })
+      MenuItem({content:'星期二'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期二'
+            this.handleDayChange(2);
+          }
+        })
+      MenuItem({content:'星期三'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期三'
+            this.handleDayChange(3);
+          }
+        })
+      MenuItem({content:'星期四'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期四'
+            this.handleDayChange(4);
+          }
+        })
+      MenuItem({content:'星期五'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期五'
+            this.handleDayChange(5);
+          }
+        })
+      MenuItem({content:'星期六'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期六'
+            this.handleDayChange(6);
+          }
+        })
+      MenuItem({content:'星期日'})
+        .selectIcon(true)
+        .onChange((selected: boolean)=>{
+          if(selected){
+            this.str_day='星期日'
+            this.handleDayChange(7);
+          }
+        })
+    }
+  }
+
   build() {
     Column() {
       Row(){
         Text('请选择日期:')
-          .margin({ top: 20 })
           .fontColor(Color.White)
+        Button(this.str_day)
+          .backgroundColor('#00BFFF')
+          .bindMenu(this.DayMenu())
       }
+      .height('8%')
       .backgroundColor('#00BFFF')
       .width('100%')
-      /*Column(){
-        Text('请选择日期:')
-          .margin({ top: 20 })
-          .fontColor(Color.White)
-        // 星期选择
-        Row() {
-          this.renderDayRadio('day1', '星期一', 1);
-          this.renderDayRadio('day2', '星期二', 2);
-          this.renderDayRadio('day3', '星期三', 3);
-          this.renderDayRadio('day4', '星期四', 4);
-          this.renderDayRadio('day5', '星期五', 5);
-          this.renderDayRadio('day6', '星期六', 6);
-          this.renderDayRadio('day7', '星期日', 7);
-        }
-        .margin({ top: 20 })
-        .backgroundColor('#CFCFCF')
-        .width('100%')
-      }
-        .backgroundColor('#00BFFF')
-        .width('100%')*/
 
       // 使用框架的 ForEach 组件来循环渲染课程
       List(){
@@ -176,25 +166,13 @@ struct schedule {
                         writeFile('course',res);
                       })
                     })
-                  /*Button('删除课程')
-                    .onClick(()=>{
-                      readFile('course').then((res: course[])=>{
-                        res=res.filter(course=>!(course.day === item.day
-                          && course.time === item.time
-                          && course.name === item.name))
-                        writeFile('course',res);
-                      })
-                    })
-                    .fontColor(Color.Black)
-                    .fontWeight(FontWeight.Normal)
-                    .backgroundColor('#ADD8E6')//#87CEFA*/
                 }
                 .margin({left:80})
               }
               .justifyContent(FlexAlign.Center)
               .border({ width: 1 })
               .borderRadius(20)
-              .backgroundColor('#4169E1')//#FFC1C1
+              .backgroundColor('#4169E1')
               .width('90%')
             }
             .margin({top:20})
@@ -205,8 +183,6 @@ struct schedule {
     }
     .width('100%')
     .height('100%')
-    //.backgroundImage('images/background.jpg')
-    //.backgroundImageSize(ImageSize.FILL);
     .backgroundColor('#E8E8E8')
   }
 }
