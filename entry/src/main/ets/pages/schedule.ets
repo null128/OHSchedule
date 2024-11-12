@@ -86,7 +86,7 @@ struct schedule {
       Row(){
         Text('请选择日期:')
           .fontColor(Color.White)
-          .margin({left:10})
+          .margin({left:'5%'})
         Button(this.str_day)
           .backgroundColor('#00BFFF')
           .bindMenu(this.DayMenu())
@@ -103,50 +103,43 @@ struct schedule {
               Row(){
                 Column(){
                   Text(`课程名称: ${item.name}`)
-                    .fontSize(20)
                     .textAlign(TextAlign.Center)
                     .fontColor(Color.White)
-                    .margin({ top: 10 });
+                    .margin({ top: '4%' });
                   if (item.time===1) {
                     Text(`时间: 一二节`)
-                      .fontSize(16)
                       .textAlign(TextAlign.Center)
                       .fontColor(Color.White)
-                      .margin({ top: 10 });
+                      .margin({ top: '3%', bottom: '3%' });
                   }
                   else if (item.time===2) {
                     Text(`时间: 三四节`)
-                      .fontSize(16)
                       .textAlign(TextAlign.Center)
                       .fontColor(Color.White)
-                      .margin({ top: 10 });
+                      .margin({ top: '3%', bottom: '3%' });
                   }
                   else if (item.time===3) {
                     Text(`时间: 五六节`)
-                      .fontSize(16)
                       .textAlign(TextAlign.Center)
                       .fontColor(Color.White)
-                      .margin({ top: 10 });
+                      .margin({ top: '3%', bottom: '3%' });
                   }
                   else if (item.time===4) {
                     Text(`时间: 七八节`)
-                      .fontSize(16)
                       .textAlign(TextAlign.Center)
                       .fontColor(Color.White)
-                      .margin({ top: 10 });
+                      .margin({ top: '3%', bottom: '3%' });
                   }
                   else if (item.time===5) {
                     Text(`时间: 九十节`)
-                      .fontSize(16)
                       .textAlign(TextAlign.Center)
                       .fontColor(Color.White)
-                      .margin({ top: 10 });
+                      .margin({ top: '3%', bottom: '3%' });
                   }
                   Text(`上课地点: ${item.place}`)
-                    .fontSize(18)
                     .textAlign(TextAlign.Center)
                     .fontColor(Color.White)
-                    .margin({ top: 10,bottom: 10 });
+                    .margin({ bottom: '4%' });
                 }
                 Column(){
                   Button(){
@@ -168,15 +161,16 @@ struct schedule {
                       })
                     })
                 }
-                .margin({left:80})
+                .margin({left:'20%'})
               }
               .justifyContent(FlexAlign.Center)
               .border({ width: 1 })
               .borderRadius(20)
+              .borderColor('#4169E1')
               .backgroundColor('#4169E1')
               .width('90%')
             }
-            .margin({top:20})
+            .margin({top:'6%'})
           })
         }
       }

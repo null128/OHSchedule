@@ -5,9 +5,9 @@ import { course } from './dataInterface';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 获取应用文件路径
-/*let context = getContext(this) as common.UIAbilityContext;
-let filesDir = context.filesDir;*/
-let filesDir = 'D:\\mywork\\LSJproject\\OpenHarmony\\OHSchedule\\entry\\src\\main\\ets\\storage'
+let context = getContext(this) as common.UIAbilityContext;
+let filesDir = context.filesDir;
+// let filesDir = 'D:\\mywork\\LSJproject\\OpenHarmony\\OHSchedule\\entry\\src\\main\\ets\\storage'
 
 export function formatFilePath(fileName: string): string {
   return `${filesDir}/${fileName}.json`

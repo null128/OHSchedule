@@ -9,10 +9,10 @@ struct Index {
         .fontSize(24)
         .fontWeight(FontWeight.Bolder)
         .width('95%')
-        .margin({top:'15%',bottom:'20%'})
+        .margin({top:'10%',bottom:'20%'})
         .align(Alignment.Center)
       Image('images/logo.jpg')
-        .width('45%')
+        .width('50%')
         .margin({bottom:'20%'})
       Button('查看课表',{type:ButtonType.Normal})
         .onClick(()=>{

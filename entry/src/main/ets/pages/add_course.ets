@@ -128,18 +128,19 @@ struct add_course{
   build(){
     Column(){
       TextInput({ placeholder: '请输入课程名称' })
-        .margin({top:30})
+        .margin({top:'10%'})
         .onChange((value:string)=>{
           name=value;
         })
       TextInput({ placeholder: '请输入上课地点' })
-        .margin({top:30})
+        .margin({top:'10%'})
         .onChange((value:string)=>{
           place=value;
         })
       Row(){
         Text('请选择课程时间')
           .fontColor('#666666')
+          .margin({left: '3%'})
         Button(this.str_day)
           .fontColor('#666666')
           .backgroundColor('#E0E0E0')
@@ -150,16 +151,16 @@ struct add_course{
           .bindMenu(this.TimeMenu())
       }
         .border({width:1})
-        .borderRadius(10)
+        .borderRadius(20)
         .borderColor('#E8E8E8')
         .backgroundColor('#E0E0E0')
-        .margin({top:30,bottom:10})
-        .width('96%')
+        .margin({top:'10%'})
+        .width('100%')
 
       if(this.error!=undefined){
         Text(this.error)
           .fontColor(Color.Red)
-          .margin({top:5})
+          .margin({top:'5%'})
       }
 
       Button('确认新增')
@@ -185,7 +186,7 @@ struct add_course{
             }
           }
         })
-        .margin({top:20})
+        .margin({top:'5%'})
     }
     .width('100%')
     .height('100%')
