@@ -4,10 +4,10 @@ import { course } from '../utils/dataInterface'
 import { router } from '@kit.ArkUI';
 
 
-let name: string | undefined;
-let place: string | undefined;
-let day: number;
-let time: number;
+let name: string | undefined=undefined;
+let place: string | undefined=undefined;
+let day: number=0;
+let time: number=0;
 
 @Entry
 @Component
@@ -141,7 +141,6 @@ struct add_course{
         Text('请选择课程时间')
           .fontColor('#666666')
         Button(this.str_day)
-          .margin({right:10})
           .fontColor('#666666')
           .backgroundColor('#E0E0E0')
           .bindMenu(this.DayMenu())

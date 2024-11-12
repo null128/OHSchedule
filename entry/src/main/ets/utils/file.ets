@@ -83,8 +83,8 @@ export function writeFile(fileName: string, message: course[]): Promise<string> 
   return new Promise<string>((resolve, reject) => {
     fs.access(formatFilePath(fileName)).then((res: boolean) => {
       if (res) {
-        let file = fs.openSync(formatFilePath(fileName), fs.OpenMode.WRITE_ONLY);
-        fs.truncate(file.fd)
+        let file = fs.openSync(formatFilePath(fileName), fs.OpenMode.READ_WRITE);
+        fs.truncateSync(file.fd)
         fs.writeSync(file.fd, JSON.stringify(message));
         console.info('has write:' + JSON.stringify(message))
         fs.closeSync(file.fd)
